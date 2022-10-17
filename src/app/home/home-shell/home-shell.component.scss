@@ -1,0 +1,28 @@
+.container {
+	width: var(--size-screen-width);
+	min-height: 100vh;
+	padding: var(--size-6);
+	display: grid;
+	justify-items: center;
+	align-items: center;
+
+	&__button {
+		width: 180px;
+		height: auto;
+		border-radius: var(--rounded-md);
+		color: var(--color-white);
+		background-color: var(--color-primary);
+		display: block;
+		text-align: center;
+		font-size: var(--text-2xl);
+		line-height: 1;
+		padding: var(--size-6);
+		cursor: pointer;
+		border: var(--border) solid var(--color-primary);
+
+		&:hover {
+			color: var(--color-primary);
+			background-color: var(--color-primary);
+		}
+	}
+}

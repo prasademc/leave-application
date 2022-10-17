@@ -1,0 +1,25 @@
+:root {
+	--screen-size-full: 100%;
+	--screen-size-fit: fit-content;
+	--screen-size-min: min-content;
+	--screen-size-max: max-content;
+	--size-auto: auto;
+	--size-none: none;
+	--size-screen-width: 100vw;
+	--size-screen-height: 100vh;
+	--border: 1px;
+	--border-0: 0;
+	--shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3) inset;
+	--rounded: 0.5rem;
+	--text-xs: 0.75rem;
+	--text-sm: 0.875rem;
+	--text-md: 1rem;
+	--text-lg: 1.825rem;
+	--text-xl: 2.25rem;
+	--color-white: #f9fafb;
+	--color-black: #000000;
+	--color-primary: #2563eb;
+	--color-secondry: #166534;
+	--color-error: #dd0000;
+	--font-family: Roboto, "Helvetica Neue", sans-serif;
+  }

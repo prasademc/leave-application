@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+@use "./scss/reset";
+@use "./scss/config";
+@use "./scss/form";
+
+
+html,
+body {
+	min-height: 100vh;
+}
+html {
+	font-size: 62.5%;
+}
+body {
+	margin: 0;
+	font-size: var(--size-4);
+	font-weight: 1;
+	font-family: var(--font-family);
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+}
