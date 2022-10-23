@@ -1,0 +1,28 @@
+
+
+:host {
+	padding: 0;
+	margin: 0;
+	.notification {
+		background-color: var(--color-error);
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: var(--size-s);
+		position: relative;
+		border-radius: var(--rounded);
+
+		&__message {
+			color: var(--color-white);
+		}
+
+		&__button {
+			position: absolute;
+			top: 0;
+			right: 0;
+			color: var(--color-white);
+		}
+	}
+
+}

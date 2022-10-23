@@ -18,4 +18,9 @@ body {
 	min-height: 100vh;
 	display: grid;
 	grid-template-rows: auto 1fr auto;
+	color: var(--color-text);
+}
+
+.mat-snack-bar-container {
+	padding: 0 !important;
 }

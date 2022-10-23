@@ -1,3 +1,28 @@
 .primary-button {
-	background-color: #ddff00;
+	display: inline-block;
+	background-color: var(--color-secondry);
+	padding: var(--space-xs) var(--space-l);
+	color: var(--color-white);
+	border-radius: var(--rounded);
+	border: 2px solid var(--color-secondry);
+
+	&:hover {
+		background-color: var(--color-white);
+		color: var(--color-secondry);
+	}
+}
+
+.primary-invers-button {
+	display: inline-block;
+	background-color: var(--color-white);
+	padding: var(--space-xs) var(--space-l);
+	color: var(--color-secondry);
+
+	border-radius: var(--rounded);
+	border: 2px solid var(--color-secondry);
+
+	&:hover {
+		background-color: var(--color-secondry);
+		color: var(--color-white);
+	}
 }

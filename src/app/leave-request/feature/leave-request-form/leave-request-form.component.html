@@ -1,0 +1,111 @@
+<form
+	[formGroup]="leaveRequestFormGroup"
+	class="form"
+	*ngIf="{ users: users$ | async } as vm"
+>
+	<h1 class="form__title">Request a Leave</h1>
+	<div class="form__row">
+		<mat-form-field>
+			<mat-label>Applicant</mat-label>
+			<mat-select formControlName="applicantID">
+				<mat-option *ngFor="let user of vm.users" [value]="user.id">
+					{{ user.firstName }} {{ user.lastName }}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Manager</mat-label>
+			<mat-select formControlName="managerID">
+				<mat-option *ngFor="let user of vm.users" [value]="user.id">
+					{{ user.firstName }} {{ user.lastName }}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+	</div>
+	<div class="form__row">
+		<mat-form-field>
+			<mat-label>Start Date</mat-label>
+			<input
+				matInput
+				autocomplete="off"
+				[matDatepicker]="startDate"
+				formControlName="startDate"
+				[min]="today"
+			/>
+			<!-- <mat-error *ngIf="leaveRequestFormGroup.invalid">Date formate is incurrect</mat-error> -->
+			<mat-datepicker-toggle
+				matSuffix
+				[for]="startDate"
+			></mat-datepicker-toggle>
+			<mat-datepicker #startDate></mat-datepicker>
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>End Date</mat-label>
+			<input
+				matInput
+				[matDatepicker]="endDate"
+				formControlName="endDate"
+				[min]="today"
+			/>
+			<mat-error *ngIf="leaveRequestFormGroup.get('endDate')?.invalid">End date must be greater than start date</mat-error>
+			<mat-datepicker-toggle
+				matSuffix
+				[for]="endDate"
+			></mat-datepicker-toggle>
+			<mat-datepicker #endDate></mat-datepicker>
+		</mat-form-field>
+	</div>
+	<div class="form__row">
+		<mat-form-field>
+			<mat-label>Return Date</mat-label>
+			<input
+				matInput
+				[matDatepicker]="returnDate"
+				formControlName="returnDate"
+				[min]="today"
+			/>
+			<mat-error *ngIf="leaveRequestFormGroup.get('returnDate')?.invalid">Return date must be greater than start date</mat-error>
+			<mat-datepicker-toggle
+				matSuffix
+				[for]="returnDate"
+			></mat-datepicker-toggle>
+			<mat-datepicker #returnDate></mat-datepicker>
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Number of days</mat-label>
+			<input matInput type="number" formControlName="numberOfDays"  readonly/>
+		</mat-form-field>
+	</div>
+	<div class="form__row single">
+		<mat-form-field>
+			<mat-label>Autosize textarea</mat-label>
+			<textarea
+				matInput
+				cdkTextareaAutosize
+				#autosize="cdkTextareaAutosize"
+				cdkAutosizeMinRows="2"
+				cdkAutosizeMaxRows="5"
+				formControlName="generalComments"
+				autocomplete="off"
+			></textarea>
+			<mat-error *ngIf="leaveRequestFormGroup.invalid">Only allowed 500 characters</mat-error>
+		</mat-form-field>
+	</div>
+	<div class="form__row">
+		<button
+			class="primary-button"
+			mat-button
+			(click)="onRequestLeave($event)"
+			[disabled]="leaveRequestFormGroup.invalid"
+		>
+			Submit
+		</button>
+		<button
+			class="primary-invers-button"
+			mat-button
+			(click)="onCancel($event)"
+		>
+			Cancel
+		</button>
+	</div>
+</form>

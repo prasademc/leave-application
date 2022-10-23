@@ -1,0 +1,9 @@
+.container {
+	width: calc(100% - 3rem);
+	min-height: 100vh;
+	padding: var(--size-s);
+	display: grid;
+	justify-items: center;
+	align-items: center;
+	margin: var(--size-s);
+}

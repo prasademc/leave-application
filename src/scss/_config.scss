@@ -1,4 +1,10 @@
 :root {
+	--size-s: 1.5rem;
+	--size-1: 2.5rem;
+	--space-xs: 1rem;
+	--space-s: 1.5rem;
+	--space-m: 2rem;
+	--space-l: 2.5rem;
 	--screen-size-full: 100%;
 	--screen-size-fit: fit-content;
 	--screen-size-min: min-content;
@@ -18,8 +24,11 @@
 	--text-xl: 2.25rem;
 	--color-white: #f9fafb;
 	--color-black: #000000;
+	--color-background: #212121;
 	--color-primary: #2563eb;
 	--color-secondry: #166534;
 	--color-error: #dd0000;
+	--color-gray: #dfdfdf;
+	--color-text: #666666;
 	--font-family: Roboto, "Helvetica Neue", sans-serif;
   }
