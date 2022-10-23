@@ -15,7 +15,6 @@ import {
 	Subject,
 	distinctUntilChanged,
 } from 'rxjs';
-import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 // import services
@@ -29,7 +28,7 @@ import { User } from '../../domain/user.model';
 import { NotificationComponent } from '../../ui/notification/notification.component';
 
 // Import validator class
-import { ValidateEndDate, ValidateReturnDate } from './date.validator';
+import { validateEndDate } from './date.validator';
 
 @Component({
 	selector: 'app-leave-request-form',
@@ -54,18 +53,21 @@ export class LeaveRequestFormComponent implements OnInit, OnDestroy {
 		private leaveRequestStoreService: LeaveRequestStoreService,
 		private _snackBar: MatSnackBar
 	) {
-		this.leaveRequestFormGroup = this.fb.group({
-			applicantID: ['', Validators.required],
-			managerID: ['', Validators.required],
-			startDate: [new Date(), [Validators.required]],
-			endDate: [new Date(), [Validators.required, ValidateEndDate]],
-			returnDate: [new Date(), [Validators.required, ValidateReturnDate]],
-			numberOfDays: [0, Validators.required],
-			generalComments: [
-				'',
-				[Validators.required, Validators.maxLength(500)],
-			],
-		});
+		this.leaveRequestFormGroup = this.fb.group(
+			{
+				applicantID: ['', Validators.required],
+				managerID: ['', Validators.required],
+				startDate: [new Date(), [Validators.required]],
+				endDate: [new Date(), [Validators.required]],
+				returnDate: [new Date(), [Validators.required]],
+				numberOfDays: [0, Validators.required],
+				generalComments: [
+					'',
+					[Validators.required, Validators.maxLength(500)],
+				],
+			},
+			{ validator: validateEndDate('startDate', 'endDate', 'returnDate') }
+		);
 	}
 
 	ngOnInit(): void {
@@ -173,7 +175,9 @@ export class LeaveRequestFormComponent implements OnInit, OnDestroy {
 	 * @param event
 	 */
 	public onRequestLeave(event: MouseEvent): void {
-		this.leaveRequestStoreService.leaveRequest$.subscribe((lRequest) => console.log("Leave Request: ", lRequest))
+		this.leaveRequestStoreService.leaveRequest$.subscribe((lRequest) =>
+			console.log('Leave Request: ', lRequest)
+		);
 	}
 
 	/**

@@ -32,7 +32,6 @@
 				formControlName="startDate"
 				[min]="today"
 			/>
-			<!-- <mat-error *ngIf="leaveRequestFormGroup.invalid">Date formate is incurrect</mat-error> -->
 			<mat-datepicker-toggle
 				matSuffix
 				[for]="startDate"
@@ -47,7 +46,7 @@
 				formControlName="endDate"
 				[min]="today"
 			/>
-			<mat-error *ngIf="leaveRequestFormGroup.get('endDate')?.invalid">End date must be greater than start date</mat-error>
+			<mat-error *ngIf="leaveRequestFormGroup.get('endDate')?.errors">End date must be greater than start date</mat-error>
 			<mat-datepicker-toggle
 				matSuffix
 				[for]="endDate"
@@ -64,7 +63,7 @@
 				formControlName="returnDate"
 				[min]="today"
 			/>
-			<mat-error *ngIf="leaveRequestFormGroup.get('returnDate')?.invalid">Return date must be greater than start date</mat-error>
+			<mat-error *ngIf="leaveRequestFormGroup.get('returnDate')?.errors">Return date must be greater than start date and end date</mat-error>
 			<mat-datepicker-toggle
 				matSuffix
 				[for]="returnDate"
